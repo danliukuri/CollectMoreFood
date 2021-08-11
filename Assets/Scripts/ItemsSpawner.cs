@@ -18,5 +18,6 @@ public class ItemsSpawner : MonoBehaviour
             transform.position.y,transform.position.z);
         GameObject gameObject = PoolManager.GetGameObject(prefabsToSpawn[Random.Range(0,prefabsToSpawn.Length)].name, randomPosition);
         gameObject.transform.rotation = Random.rotation;
+        gameObject.GetComponent<Rigidbody>().AddTorque(Random.rotation.eulerAngles);
     }
 }
