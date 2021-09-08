@@ -9,9 +9,13 @@ public class DisablePlayerOnTriggerEnter : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.SetActive(false);
-            other.GetComponent<Rigidbody>().Sleep();
             other.GetComponent<ParticleSystemController>().Play();
-            // Score ++
+            
+            if(GameplayHandler.GameplayStarted)
+            {
+                ScoreCounter.Score++;
+                ScoreCounter.UpdateScoreText();
+            }
         }
     }
 }

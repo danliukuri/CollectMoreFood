@@ -9,7 +9,13 @@ public class DisablePlayerOnTriggerExit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.SetActive(false);
-            other.GetComponent<Rigidbody>().Sleep();
+
+            if (GameplayHandler.GameplayStarted)
+            {
+                ScoreCounter.ScoreToLose++;
+                ScoreCounter.UpdateScoreToLose();
+                GameplayHandler.CheckGameLose();
+            }
         }
     }
 }
