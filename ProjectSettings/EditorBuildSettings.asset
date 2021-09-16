@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/CollectMoreFood.unity
+    guid: 22835eda87f84a64bad1f3239ed69ef1
   m_configObjects: {}

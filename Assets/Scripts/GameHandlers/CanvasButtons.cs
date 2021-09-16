@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utilities.Audio;
 
 public class CanvasButtons : MonoBehaviour
 {
@@ -47,6 +46,7 @@ public class CanvasButtons : MonoBehaviour
         ScoreCounter.UpdateScoreText();
         ScoreCounter.UpdateScoreToLose();
         gameplayStartCountdown.SetActive(true);
+        AudioManager.FadeOutAndStop("MenuTheme", 0.7f);
     }
     public void Quit()
     {
@@ -87,5 +87,7 @@ public class CanvasButtons : MonoBehaviour
         instance.gameoverMenu.SetActive(true);
         instance.gameplayMenuAnimator.SetTrigger("Disappear");
     }
+
+    public void PlayButtonClickSound() => AudioManager.Play("ButtonClick");
     #endregion
 }

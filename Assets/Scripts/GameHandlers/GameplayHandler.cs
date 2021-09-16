@@ -29,10 +29,12 @@ public class GameplayHandler : MonoBehaviour
     {
         instance.itemsSpawner.InvokeRepeatingSpawn();
         GameplayStarted = false;
+        AudioController.PlayMenuTheme();
     }
 
     public static void StartGameplay()
     {
+        AudioController.StartGameplay();
         GameplayStarted = true;
         instance.playerControlArea.SetActive(true);
         instance.itemsSpawner.InvokeRepeatingSpawn();
@@ -40,6 +42,7 @@ public class GameplayHandler : MonoBehaviour
     }
     static void FinishGameplay()
     {
+        AudioController.FinishGameplay();
         GameplayStarted = false;
         instance.playerControlArea.SetActive(false);
         instance.itemsSpawner.CancelInvoke(nameof(instance.itemsSpawner.Spawn));
@@ -51,13 +54,19 @@ public class GameplayHandler : MonoBehaviour
     {
         GameplayPaused = true;
         Time.timeScale = 0f;
+        AudioController.PauseGameplay();
     }
-    public static void ResumeGameplay()
+    public static void UnpauseGameplay()
     {
         GameplayPaused = false;
         Time.timeScale = 1f;
+        AudioController.UnpauseGameplay();
     }
-
+    public static void ResumeGameplay()
+    {
+        UnpauseGameplay();
+        AudioController.ResumeGameplay();
+    }
     public static void CheckGameLose()
     {
         if (ScoreCounter.ScoreToLose == instance.scoreNumberToLose) 
