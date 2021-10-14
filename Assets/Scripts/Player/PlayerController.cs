@@ -14,12 +14,13 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        InputHandler.GetHorizontalAxis(ref horizontalInput);
     }
     void FixedUpdate()
     {
-        if (!(transform.position.x > xMovementRange && horizontalInput > 0f ||
-            transform.position.x < -xMovementRange && horizontalInput < 0f))
-            rgdbody.velocity = new Vector3(horizontalInput * speed, rgdbody.velocity.y, rgdbody.velocity.z);
+        if (horizontalInput != 0)
+            if (!(transform.position.x > xMovementRange && horizontalInput > 0f || // if goes to left
+                transform.position.x < -xMovementRange && horizontalInput < 0f)) // if goes to right
+                rgdbody.velocity = new Vector3(horizontalInput * speed, rgdbody.velocity.y, rgdbody.velocity.z);
     }
 }
