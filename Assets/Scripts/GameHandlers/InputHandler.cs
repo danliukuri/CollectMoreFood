@@ -12,6 +12,7 @@ public class InputHandler : MonoBehaviour
                 CanvasButtons.Pause(); 
             else
                 CanvasButtons.Unpause();
+            CanvasButtons.PlayButtonClickSound();
         }       
     }
 }

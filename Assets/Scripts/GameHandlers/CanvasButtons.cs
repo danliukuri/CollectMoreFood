@@ -88,6 +88,6 @@ public class CanvasButtons : MonoBehaviour
         instance.gameplayMenuAnimator.SetTrigger("Disappear");
     }
 
-    public void PlayButtonClickSound() => AudioManager.Play("ButtonClick");
+    public static void PlayButtonClickSound() => AudioManager.Play("ButtonClick");
     #endregion
 }
