@@ -1,3 +1,4 @@
+using GameHandlers;
 using UnityEngine;
 
 public class PlayerCollectionOnTriggerEnter : MonoBehaviour
