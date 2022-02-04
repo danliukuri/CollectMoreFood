@@ -4,6 +4,9 @@ namespace GameHandlers
 {
     public class InputHandler : MonoBehaviour
     {
+#if UNITY_ANDROID
+        const float interpolatationStepMultiplier = 8;
+#endif
         void Update()
         {
             if (GameplayHandler.GameplayStarted && Input.GetKeyDown(KeyCode.Escape))
@@ -18,7 +21,7 @@ namespace GameHandlers
 #if UNITY_ANDROID
         public static void GetHorizontalAxis(ref float horizontalInput)
         {
-            const float interpolatationStep = 0.05f;
+            float interpolatationStep = interpolatationStepMultiplier * Time.deltaTime;
 
             if (Input.touchCount > 0)
             {
@@ -28,7 +31,7 @@ namespace GameHandlers
                 horizontalInput = Mathf.LerpUnclamped(horizontalInput, target, interpolatationStep);
             }
             else
-                horizontalInput = ((horizontalInput) < interpolatationStep) ? 0f :
+                horizontalInput = (Mathf.Abs(horizontalInput) < interpolatationStep) ? 0f :
                     Mathf.LerpUnclamped(horizontalInput, 0f, interpolatationStep);
         }
 #elif UNITY_STANDALONE || UNITY_WEBGL
