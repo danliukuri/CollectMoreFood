@@ -5,11 +5,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float xMovementRange;
+    const float defaultHorizontalInputValue = 0;
     float horizontalInput;
     Rigidbody rgdbody;
     void Awake()
     {
         rgdbody = GetComponent<Rigidbody>();
+    }
+    public void Reset()
+    {
+        horizontalInput = defaultHorizontalInputValue;
     }
     void Update()
     {
