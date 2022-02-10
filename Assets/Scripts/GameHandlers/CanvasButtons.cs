@@ -55,6 +55,7 @@ namespace GameHandlers
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
+        Application.Quit();
         Application.OpenURL("https://yuriy-danyliuk.itch.io/");
 #else
         Application.Quit();
